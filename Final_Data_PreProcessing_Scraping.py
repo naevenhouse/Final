@@ -4,15 +4,15 @@ ECE 5831
 Final
 Nathaniel Evenhouse
 """
-#required packages
 import time
 import pandas as pd
 from goodreads import client
 
 restart = False
 write = True
-classify_count = 1000
-backup_cycle = 250
+classify_count = 50000
+backup_cycle = 1000
+start_index = 49555
 
 #current time, used to track run time.
 t0 = time.time()
@@ -31,7 +31,7 @@ if restart:
     df['Classified'] = False
     
 #pulls data from goodreads website
-i=0
+i=start_index
 currently_classified = 0
 newly_classified = 0
 t_start = time.time()
@@ -72,8 +72,11 @@ for ID in df['Id']:
         print("Looptime: " + str(time.time() - t_start) + "seconds")
     t_start = time.time()
 
+time.sleep(30)
 if write:
+    print('Saving File...')
     df.to_csv('Compiled_Data.csv', index=False)
+    print('Data saved')
 
 #processing time overall
 print("Classified books: " + str(i))
