@@ -12,7 +12,7 @@ restart = False
 write = True
 classify_count = 50000
 backup_cycle = 1000
-start_index = 49555
+start_index = 49550
 
 #current time, used to track run time.
 t0 = time.time()
@@ -38,7 +38,7 @@ t_start = time.time()
 for ID in df['Id']:
     try:
         if df.get_value(i,'Classified')==False:
-            book = gc.book(ID)
+            book = gc.book(i)
             genres_of_book = book.popular_shelves
             print("Read time for book " + str(i) + " : " + str(time.time()-t_start) + " seconds")
             read_book_time = time.time()
@@ -66,13 +66,13 @@ for ID in df['Id']:
         else:
             currently_classified+=1
     except:
-        print("error in ID: " + str(ID))
+        print("error in ID: " + str(i))
     i+=1
     if newly_classified>0:
         print("Looptime: " + str(time.time() - t_start) + "seconds")
     t_start = time.time()
 
-time.sleep(30)
+#time.sleep(30)
 if write:
     print('Saving File...')
     df.to_csv('Compiled_Data.csv', index=False)
