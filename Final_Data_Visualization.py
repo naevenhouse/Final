@@ -13,6 +13,8 @@ t_0 = time.time()
 df = pd.read_csv('Processed_data.csv')
 sett = pd.read_csv('Settings.csv')
 
+print(len(df))
+
 counts = []
 
 for key in sett['Genres']:
@@ -22,3 +24,4 @@ for key in sett['Genres']:
 output = pd.DataFrame(counts, columns = ['Genre', 'Count'])
 
 sns.barplot(data=output,y = 'Genre', x = 'Count')
+print(len(df))

@@ -10,9 +10,9 @@ from goodreads import client
 
 restart = False
 write = True
-classify_count = 50000
+classify_count = 100000
 backup_cycle = 1000
-start_index = 49550
+start_index = 110000
 
 #current time, used to track run time.
 t0 = time.time()
